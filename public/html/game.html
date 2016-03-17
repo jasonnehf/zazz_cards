@@ -1,0 +1,39 @@
+<div class="modal in fade" data-show="true" id="choose-category-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="new-worker-title">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="new-card-title">Choose A Category...</h4>
+			</div>
+				<div class="modal-body row">
+					<div >
+					<button class='btn btn-info btn-category' ng-repeat='cat in categories track by $index' ng-click='setCategory(cat)' type="button">{{cat}}</button>
+					</div>
+					<div style="text-align:center">_________________________</div>
+					<div >
+					<button class='btn btn-info btn-category' ng-click='setCategory()' type='button'>All Categories</button>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+<div class='container'>
+	<div class="row">
+		<div class="col-xs-12 col-md-6 col-md-offset-3">
+			<div>
+				<uib-carousel interval="none" no-wrap="noWrapSlides" active="slide.active">
+					<uib-slide ng-repeat="slide in cards | filter:{CategoryName:categoryName } track by $index" index="$index" > <!-- index="slide.CardID-1" -->
+						<img ng-src="{{cardImage}}" style="margin:auto;">
+						<div class="carousel-caption" ng-show="showCards">
+							<p class='question'>{{slide.Question}}</p>
+							<p ng-mouseleave='mouseLeave()' ng-mouseover='mouseOver()' class='answer infinite pulse' ng-class='{animated:hideAnswer===true}'>
+								<span ng-class='{hideAnswer:hideAnswer===true}'>{{slide.Answer}}</span>
+							</p>
+							<!-- <button ng-show="hideAnswer===true" ng-click="toggleAnswer()">Show Answer!</button> -->
+							<!-- <button ng-show="hideAnswer===false">Next Question!</button> -->
+						</div>
+					</uib-slide>
+				</uib-carousel>
+			</div>
+		</div>
+	</div>
+</div>
