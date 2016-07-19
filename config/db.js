@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection( process.env.JAWSDB_URL || {
 	host: 'localhost',
 	user: 'chproject',
-	password: 'C0D1n9H0u$e',
+	password: '',
 	database: 'zazz_cards'
 });
 
